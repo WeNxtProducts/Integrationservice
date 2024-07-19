@@ -25,11 +25,12 @@ public class SecurityConfig {
         http
             .csrf().disable() // Disable CSRF protection for simplicity (adjust as per your application's requirements)
             .authorizeRequests(authorizeRequests -> authorizeRequests
-                .requestMatchers("/YiCover/save").authenticated()  // Requires authentication for /YiCover/save
-                .requestMatchers("/charges/save").authenticated() // Requires authentication for /charges/save
-                .anyRequest().permitAll()                     // Permits access to any other request
+                .requestMatchers("/YiCover/save").authenticated()  
+                .requestMatchers("/charges/save").authenticated() 
+                .requestMatchers("/common/invokeProcedure").authenticated() 
+                .anyRequest().permitAll()                     
             )
-            .httpBasic();                                     // Enables HTTP Basic authentication
+            .httpBasic();                                     
 
         return http.build();
     }
